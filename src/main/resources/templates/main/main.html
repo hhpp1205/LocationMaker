@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <title>Location Maker</title>
+    <th:block layout:fragment="css">
+        <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
+    </th:block>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="main-content-wrap">
+        <div class="notice" data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-delay="100">
+            <h1><i class="bi bi-patch-exclamation-fill"></i> 공지사항</h1>
+            <div class="border border-light round-3" style="width: 90%;">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">작성자</th>
+                        <th scope="col">제목</th>
+                        <th scope="col">작성일자</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>작성자</td>
+                        <td>제목</td>
+                        <td>작성일자</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>작성자</td>
+                        <td>제목</td>
+                        <td>작성일자</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>작성자</td>
+                        <td>제목</td>
+                        <td>작성일자</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="place-status" data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-delay="200">
+            <h1><i class="bi bi-journal-bookmark-fill"></i> 사용현황</h1>
+            <div class="border border-light round-3" style="width: 90%;">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">장소</th>
+                        <th scope="col">위치</th>
+                        <th scope="col">사용여부</th>
+                        <th scope="col">사용시간</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>워크스테이션실</td>
+                        <td>나래관 4층</td>
+                        <td><i class="bi bi-exclamation-circle-fill place-using"></i></td>
+                        <td>00:00 ~ 00:00</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>카페</td>
+                        <td>학생회관</td>
+                        <td><i class="bi bi-exclamation-circle-fill place-not-using"></i></td>
+                        <td>빈 공간입니다.</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</body>
+</html>

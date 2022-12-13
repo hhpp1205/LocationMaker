@@ -1,0 +1,11 @@
+.place-status{
+    margin-top: 30px;
+}
+
+.place-using {
+    color: red;
+}
+
+.place-not-using{
+    color: greenyellow;
+}
