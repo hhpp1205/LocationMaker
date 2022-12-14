@@ -1,9 +1,9 @@
 package kr.ac.kopo.service;
 
+import kr.ac.kopo.domain.ReservationDTO;
 import kr.ac.kopo.entity.Reservation;
 import kr.ac.kopo.repository.ReservationRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,7 +19,10 @@ public class ReservationService {
     private final ReservationRepository reservationRepository;
 
 
-    public boolean createReservation(Reservation reservation) {
+    public boolean createReservation(ReservationDTO reservationDTO) {
+        Reservation reservation = reservationDTO.toEntity();
+
+        reservationDTO.toEntity();
         if (checkTime(reservation).size() == 0) {
             //예약가능 로직
             reservationRepository.save(reservation);
@@ -30,7 +33,9 @@ public class ReservationService {
         }
     }
 
-    public boolean updateReservation(Reservation reservation) {
+    public boolean updateReservation(ReservationDTO reservationDTO) {
+        Reservation reservation = reservationDTO.toEntity();
+
         List<Reservation> reservations = checkTime(reservation);
         Optional<Reservation> oReservation = reservationRepository.findById(reservation.getId());
 

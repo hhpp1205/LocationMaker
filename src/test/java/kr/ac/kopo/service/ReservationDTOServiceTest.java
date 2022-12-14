@@ -1,8 +1,8 @@
 package kr.ac.kopo.service;
 
+import kr.ac.kopo.domain.ReservationDTO;
 import kr.ac.kopo.entity.Reservation;
 import kr.ac.kopo.repository.ReservationRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,10 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 @Transactional
-class ReservationServiceTest {
+class ReservationDTOServiceTest {
 
     @Autowired
     ReservationService reservationService;
@@ -30,12 +30,12 @@ class ReservationServiceTest {
         reservationRepository.save(reservation);
 
         //when
-        Reservation failCase1 = new Reservation();
+        ReservationDTO failCase1 = new ReservationDTO();
         failCase1.setStartTime(LocalDateTime.now().plusHours(3L));
         failCase1.setEndTime(LocalDateTime.now().plusHours(5L));
         boolean result1 = reservationService.createReservation(failCase1);
 
-        Reservation failCase2 = new Reservation();
+        ReservationDTO failCase2 = new ReservationDTO();
         failCase2.setStartTime(LocalDateTime.now().minusHours(1L));
         failCase2.setEndTime(LocalDateTime.now().plusHours(1L));
         boolean result2 = reservationService.createReservation(failCase2);
@@ -54,15 +54,15 @@ class ReservationServiceTest {
         reservationRepository.save(reservation);
 
         //when
-        Reservation successCase1 = new Reservation();
-        successCase1.setStartTime(LocalDateTime.now().plusHours(1L));
-        successCase1.setEndTime(LocalDateTime.now().plusHours(2L));
-        boolean result1 = reservationService.createReservation(successCase1);
+        ReservationDTO successCase1DTO = new ReservationDTO();
+        successCase1DTO.setStartTime(LocalDateTime.now().plusHours(1L));
+        successCase1DTO.setEndTime(LocalDateTime.now().plusHours(2L));
+        boolean result1 = reservationService.createReservation(successCase1DTO);
 
-        Reservation successCase2 = new Reservation();
-        successCase2.setStartTime(LocalDateTime.now().minusHours(3L));
-        successCase2.setEndTime(LocalDateTime.now().minusHours(1L));
-        boolean result2 = reservationService.createReservation(successCase2);
+        ReservationDTO successCase2DTO = new ReservationDTO();
+        successCase2DTO.setStartTime(LocalDateTime.now().minusHours(3L));
+        successCase2DTO.setEndTime(LocalDateTime.now().minusHours(1L));
+        boolean result2 = reservationService.createReservation(successCase2DTO);
 
         //then
         assertThat(result1).isEqualTo(true);
@@ -86,7 +86,8 @@ class ReservationServiceTest {
         Reservation findReservation = reservationRepository.findById(reservation1.getId()).orElseThrow(RuntimeException::new);
         findReservation.setStartTime(LocalDateTime.now().plusHours(3L));
         findReservation.setEndTime(LocalDateTime.now().plusHours(5L));
-        boolean result = reservationService.updateReservation(findReservation);
+        ReservationDTO findReservationDTO = findReservation.toDTO();
+        boolean result = reservationService.updateReservation(findReservationDTO);
 
         //then
         assertThat(result).isEqualTo(false);
@@ -103,7 +104,8 @@ class ReservationServiceTest {
         //when
         reservation1.setStartTime(LocalDateTime.now().plusHours(3L));
         reservation1.setEndTime(LocalDateTime.now().plusHours(5L));
-        boolean result = reservationService.updateReservation(reservation1);
+        ReservationDTO reservation1DTO = reservation1.toDTO();
+        boolean result = reservationService.updateReservation(reservation1DTO);
 
         //then
         assertThat(result).isEqualTo(true);

@@ -5,8 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PlaceImgVO {
-    private int id;
+public class PlaceAttachVO {
+    private Long id;
     private String imgName;
-    private int placeId;
+    private Long placeId;
 }

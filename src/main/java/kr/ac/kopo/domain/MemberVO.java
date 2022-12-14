@@ -6,12 +6,13 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MemberVO {
-    private int id;
+    private Long id;
+    private String loginId;
     private String pwd;
     private String salt;
     private String name;
     private String major;
     private int grade;
     private String authority;
-    private int schoolId;
+    private Long schoolId;
 }

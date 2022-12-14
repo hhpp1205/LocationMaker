@@ -1,20 +1,17 @@
-package kr.ac.kopo.entity;
+package kr.ac.kopo.domain;
 
-import kr.ac.kopo.domain.ReservationDTO;
+import kr.ac.kopo.entity.Reservation;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
+@Getter
+@Setter
 @NoArgsConstructor
-@Data
-public class Reservation {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ReservationDTO {
     private Long id;
 
     private LocalDateTime startTime;
@@ -25,16 +22,8 @@ public class Reservation {
 
     private String purpose;
 
-    @ManyToOne
-    @JoinColumn(name = "member_id")
-    private Member member;
-
-    @ManyToOne
-    @JoinColumn(name = "space_id")
-    private Place place;
-
     @Builder
-    public Reservation(Long id, LocalDateTime startTime, LocalDateTime endTime, int headCount, String purpose) {
+    public ReservationDTO(Long id, LocalDateTime startTime, LocalDateTime endTime, int headCount, String purpose) {
         this.id = id;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -42,8 +31,8 @@ public class Reservation {
         this.purpose = purpose;
     }
 
-    public ReservationDTO toDTO() {
-        return ReservationDTO.builder()
+    public Reservation toEntity() {
+        return Reservation.builder()
                 .id(id)
                 .startTime(startTime)
                 .endTime(endTime)
@@ -51,5 +40,7 @@ public class Reservation {
                 .purpose(purpose)
                 .build();
     }
+
+
 
 }

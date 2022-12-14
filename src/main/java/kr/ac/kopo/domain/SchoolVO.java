@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SchoolVO {
-    private int id;
+    private Long id;
     private String name;
     private String call;
 }

@@ -6,8 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PlaceVO {
-    private int id;
+    private Long id;
     private String name;
     private String location;
-    private int schoolId;
+    private Long schoolId;
 }
