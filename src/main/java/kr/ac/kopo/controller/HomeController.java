@@ -13,24 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequiredArgsConstructor
 public class HomeController {
 
-    private final ReservationService reservationService;
+
 
     @GetMapping("/")
     public String HomePage() {
         return "main/main";
     }
 
-    @GetMapping("/reserve")
-    public String reservePage(){
-        return "reservation/reservation";
-    }
 
-    @PostMapping("/reserve")
-    public String reservedPage(ReservationDTO reservationDTO) {
-        if (reservationService.createReservation(reservationDTO)) {
-            return "SuccessPage";
-        }
-
-        return "FailPage";
-    }
 }

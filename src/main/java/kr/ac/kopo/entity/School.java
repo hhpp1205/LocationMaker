@@ -1,5 +1,6 @@
 package kr.ac.kopo.entity;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,4 +22,11 @@ public class School {
 
     private String call;
 
+
+    @Builder
+    public School(Long id, String name, String call) {
+        this.id = id;
+        this.name = name;
+        this.call = call;
+    }
 }
