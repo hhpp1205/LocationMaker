@@ -6,8 +6,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-    @Query(nativeQuery = true, value = "select count(*) from reservation where start_time < :endTime and end_time > :startTime")
-    int checkTime(@Param("startTime") LocalDateTime startTime, @Param("endTime") LocalDateTime endTime);
+    @Query(nativeQuery = true, value = "select * from reservation where start_time < :endTime and end_time > :startTime")
+    List<Reservation> checkTime(@Param("startTime") LocalDateTime startTime, @Param("endTime") LocalDateTime endTime);
 }

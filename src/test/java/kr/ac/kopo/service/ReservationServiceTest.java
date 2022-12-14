@@ -69,5 +69,45 @@ class ReservationServiceTest {
         assertThat(result2).isEqualTo(true);
     }
 
+    @Test
+    void updateReservationFailCase() {
+        //given
+        Reservation reservation1 = new Reservation();
+        reservation1.setStartTime(LocalDateTime.now());
+        reservation1.setEndTime(LocalDateTime.now().plusHours(1L));
+        reservationRepository.save(reservation1);
+
+        Reservation reservation2 = new Reservation();
+        reservation2.setStartTime(LocalDateTime.now().plusHours(2L));
+        reservation2.setEndTime(LocalDateTime.now().plusHours(4L));
+        reservationRepository.save(reservation2);
+
+        //when
+        Reservation findReservation = reservationRepository.findById(reservation1.getId()).orElseThrow(RuntimeException::new);
+        findReservation.setStartTime(LocalDateTime.now().plusHours(3L));
+        findReservation.setEndTime(LocalDateTime.now().plusHours(5L));
+        boolean result = reservationService.updateReservation(findReservation);
+
+        //then
+        assertThat(result).isEqualTo(false);
+    }
+
+    @Test
+    void updateReservationSuccessCase() {
+        //given
+        Reservation reservation1 = new Reservation();
+        reservation1.setStartTime(LocalDateTime.now());
+        reservation1.setEndTime(LocalDateTime.now().plusHours(1L));
+        reservationRepository.save(reservation1);
+
+        //when
+        reservation1.setStartTime(LocalDateTime.now().plusHours(3L));
+        reservation1.setEndTime(LocalDateTime.now().plusHours(5L));
+        boolean result = reservationService.updateReservation(reservation1);
+
+        //then
+        assertThat(result).isEqualTo(true);
+    }
+
 
 }
