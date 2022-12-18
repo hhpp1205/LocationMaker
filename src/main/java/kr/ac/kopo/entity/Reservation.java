@@ -1,6 +1,6 @@
 package kr.ac.kopo.entity;
 
-import kr.ac.kopo.domain.ReservationDTO;
+import kr.ac.kopo.domain.ReservationDto;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -42,8 +42,8 @@ public class Reservation {
         this.purpose = purpose;
     }
 
-    public ReservationDTO toDTO() {
-        return ReservationDTO.builder()
+    public ReservationDto toDto() {
+        return ReservationDto.builder()
                 .id(id)
                 .startTime(startTime)
                 .endTime(endTime)

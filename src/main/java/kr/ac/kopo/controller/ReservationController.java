@@ -1,6 +1,6 @@
 package kr.ac.kopo.controller;
 
-import kr.ac.kopo.domain.ReservationDTO;
+import kr.ac.kopo.domain.ReservationDto;
 import kr.ac.kopo.service.ReservationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +29,7 @@ public class ReservationController {
     }
 
     @PostMapping
-    public String reservedPage(ReservationDTO reservationDTO) {
+    public String reservedPage(ReservationDto reservationDTO) {
         if (reservationService.createReservation(reservationDTO)) {
             return "SuccessPage";
         }

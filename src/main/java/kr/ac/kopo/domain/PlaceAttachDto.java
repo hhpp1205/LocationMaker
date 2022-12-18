@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PlaceAttachDTO {
+public class PlaceAttachDto {
     private Long id;
     private String imgName;
     private Long placeId;

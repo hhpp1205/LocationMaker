@@ -1,6 +1,6 @@
 package kr.ac.kopo.service;
 
-import kr.ac.kopo.domain.ReservationDTO;
+import kr.ac.kopo.domain.ReservationDto;
 import kr.ac.kopo.entity.Reservation;
 import kr.ac.kopo.repository.ReservationRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ public class ReservationService {
     private final ReservationRepository reservationRepository;
 
 
-    public boolean createReservation(ReservationDTO reservationDTO) {
+    public boolean createReservation(ReservationDto reservationDTO) {
         Reservation reservation = reservationDTO.toEntity();
 
         reservationDTO.toEntity();
@@ -33,7 +33,7 @@ public class ReservationService {
         }
     }
 
-    public boolean updateReservation(ReservationDTO reservationDTO) {
+    public boolean updateReservation(ReservationDto reservationDTO) {
         Reservation reservation = reservationDTO.toEntity();
 
         List<Reservation> reservations = checkTime(reservation);

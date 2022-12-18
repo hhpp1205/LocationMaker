@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PlaceDTO {
+public class PlaceDto {
     private Long id;
     private String name;
     private String location;

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ReservationDTO {
+public class ReservationDto {
     private Long id;
 
     private LocalDateTime startTime;
@@ -23,7 +23,7 @@ public class ReservationDTO {
     private String purpose;
 
     @Builder
-    public ReservationDTO(Long id, LocalDateTime startTime, LocalDateTime endTime, int headCount, String purpose) {
+    public ReservationDto(Long id, LocalDateTime startTime, LocalDateTime endTime, int headCount, String purpose) {
         this.id = id;
         this.startTime = startTime;
         this.endTime = endTime;

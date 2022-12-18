@@ -1,7 +1,6 @@
 package kr.ac.kopo.controller;
 
-import kr.ac.kopo.domain.SchoolDTO;
-import kr.ac.kopo.entity.School;
+import kr.ac.kopo.domain.SchoolDto;
 import kr.ac.kopo.service.SchoolService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,8 +18,8 @@ public class SchoolController {
     private final SchoolService schoolService;
 
     @GetMapping("add")
-    public String addPage(SchoolDTO schoolDTO) {
-        School school = schoolService.addSchool(schoolDTO);
+    public String addPage(SchoolDto schoolDTO) {
+        schoolService.addSchool(schoolDTO);
 
         return "hihi";
     }
